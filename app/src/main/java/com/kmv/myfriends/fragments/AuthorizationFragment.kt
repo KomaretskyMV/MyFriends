@@ -54,7 +54,7 @@ class AuthorizationFragment : Fragment() {
                                 binding.signInButton.isEnabled = true
 
                                 parentFragmentManager.beginTransaction()
-                                    .replace(R.id.container, PageFragment.newInstance(binding.login.text.toString()))
+                                    .replace(binding.root.id, PageFragment.newInstance(binding.login.text.toString()))
                                     .addToBackStack(null)
                                     .commit()
                             }
