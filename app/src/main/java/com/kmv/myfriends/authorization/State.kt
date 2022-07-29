@@ -1,4 +1,4 @@
-package com.kmv.myfriends.model
+package com.kmv.myfriends.authorization
 
 sealed class State {
     object Loading : State()

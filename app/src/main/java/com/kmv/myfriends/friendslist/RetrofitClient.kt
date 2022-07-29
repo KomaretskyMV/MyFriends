@@ -1,7 +1,6 @@
-package com.kmv.myfriends.retrofit
+package com.kmv.myfriends.friendslist
 
-import com.kmv.myfriends.dataclasses.User
-import retrofit2.Response
+import com.kmv.myfriends.friendslist.dataclasses.User
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET

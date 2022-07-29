@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
     app:cardElevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="167dp">
+        android:layout_height="170dp">
 
 
         <ImageView
@@ -20,7 +20,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/first_name_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/first_name_title"
@@ -28,9 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="@string/first_name_title"
-            app:layout_constraintBottom_toBottomOf="@id/first_name"
+            app:layout_constraintBottom_toTopOf="@id/last_name_title"
             app:layout_constraintStart_toEndOf="@id/image"
-            app:layout_constraintTop_toTopOf="@id/first_name" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -40,9 +41,9 @@
             android:paddingStart="8dp"
             android:textColor="@color/black"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/first_name_title"
             app:layout_constraintStart_toEndOf="@id/first_name_title"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/last_name"
+            app:layout_constraintTop_toTopOf="@id/first_name_title"
             tools:text="first name" />
 
         <TextView
@@ -51,9 +52,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="@string/last_name_title"
-            app:layout_constraintBottom_toBottomOf="@id/last_name"
+            app:layout_constraintBottom_toTopOf="@id/age_title"
             app:layout_constraintStart_toEndOf="@id/image"
-            app:layout_constraintTop_toTopOf="@id/last_name" />
+            app:layout_constraintTop_toBottomOf="@id/first_name_title" />
 
         <TextView
             android:id="@+id/last_name"
@@ -62,9 +63,9 @@
             android:paddingStart="8dp"
             android:textColor="@color/black"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/last_name_title"
             app:layout_constraintStart_toEndOf="@id/last_name_title"
-            app:layout_constraintTop_toBottomOf="@+id/first_name"
-            app:layout_constraintBottom_toTopOf="@id/age_title"
+            app:layout_constraintTop_toTopOf="@id/last_name_title"
             tools:text="last name" />
 
         <TextView
@@ -73,9 +74,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="@string/age_title"
-            app:layout_constraintBottom_toBottomOf="@id/age"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/image"
-            app:layout_constraintTop_toTopOf="@id/age" />
+            app:layout_constraintTop_toBottomOf="@id/last_name_title" />
 
         <TextView
             android:id="@+id/age"
@@ -84,9 +85,9 @@
             android:paddingStart="8dp"
             android:textColor="@color/black"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/age_title"
             app:layout_constraintStart_toEndOf="@id/age_title"
-            app:layout_constraintTop_toBottomOf="@+id/last_name"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/age_title"
             tools:text="age" />
 
 

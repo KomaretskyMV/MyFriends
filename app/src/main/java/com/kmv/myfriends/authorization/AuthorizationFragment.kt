@@ -1,4 +1,4 @@
-package com.kmv.myfriends.fragments
+package com.kmv.myfriends.authorization
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,20 +10,22 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.kmv.myfriends.R
-import com.kmv.myfriends.model.MainViewModel
-import com.kmv.myfriends.model.State
 import com.kmv.myfriends.databinding.FragmentAuthorizationBinding
+import com.kmv.myfriends.databinding.FragmentPageBinding
+import com.kmv.myfriends.friendslist.FriendsListFragment
+import kotlinx.coroutines.flow.filterNotNull
 
 class AuthorizationFragment : Fragment() {
 
-    private lateinit var binding: FragmentAuthorizationBinding
+    private var _binding: FragmentAuthorizationBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAuthorizationBinding.inflate(inflater, container, false)
+        _binding = FragmentAuthorizationBinding.inflate(inflater)
         return binding.root
     }
 
@@ -38,7 +40,7 @@ class AuthorizationFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope
             .launchWhenStarted {
-                viewModel.state
+                viewModel.state.filterNotNull()
                     .collect { state ->
                         when (state) {
                             State.Loading -> {
@@ -54,7 +56,8 @@ class AuthorizationFragment : Fragment() {
                                 binding.signInButton.isEnabled = true
 
                                 parentFragmentManager.beginTransaction()
-                                    .replace(binding.root.id, PageFragment.newInstance(binding.login.text.toString()))
+                                    .replace(R.id.container,
+                                        FriendsListFragment.newInstance(binding.login.text.toString()))
                                     .addToBackStack(null)
                                     .commit()
                             }
@@ -78,6 +81,11 @@ class AuthorizationFragment : Fragment() {
                     }
 
             }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
     companion object {

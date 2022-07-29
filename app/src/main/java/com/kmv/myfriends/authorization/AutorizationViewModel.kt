@@ -1,4 +1,4 @@
-package com.kmv.myfriends.model
+package com.kmv.myfriends.authorization
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,9 +11,9 @@ import kotlinx.coroutines.launch
 
 private const val TAG = "MainViewModel"
 
-class MainViewModel() : ViewModel() {
+class MainViewModel : ViewModel() {
 
-    private val _state = MutableStateFlow<State>(State.Success) // значение по умолчанию
+    private val _state = MutableStateFlow<State?>(null) // значение по умолчанию
     val state = _state.asStateFlow()
 
     private val _error = Channel<String>()
@@ -37,7 +37,7 @@ class MainViewModel() : ViewModel() {
             } else {
                 _state.value = State.Loading
                 try {
-                delay(3_000)
+                delay(1000)
                     _state.value = State.Success
                 } catch (e: Exception) {
                     _error.send(e.toString())
