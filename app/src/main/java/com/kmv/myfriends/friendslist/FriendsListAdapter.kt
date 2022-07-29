@@ -18,7 +18,7 @@ class FriendsListAdapter : RecyclerView.Adapter<FriendsViewHolder>() {
     override fun getItemCount(): Int = data.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendsViewHolder {
-        val binding = FriendsItemBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = FriendsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FriendsViewHolder(binding)
     }
 
